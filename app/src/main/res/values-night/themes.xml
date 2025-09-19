@@ -1,0 +1,16 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base theme sin ActionBar -->
+    <style name="Base.Theme.MusicApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Fondo claro -->
+        <item name="android:windowBackground">@android:color/white</item>
+
+        <!-- Fullscreen -->
+        <item name="android:windowFullscreen">true</item>
+
+        <!-- Barras transparentes -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.MusicApp" parent="Base.Theme.MusicApp" />
+</resources>
