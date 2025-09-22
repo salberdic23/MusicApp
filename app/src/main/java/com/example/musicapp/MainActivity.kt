@@ -32,11 +32,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bgImage = findViewById<ImageView>(R.id.bgBlur)
-        bgImage.setImageResource(R.drawable.cover)
+        val bgImage = findViewById<ImageView?>(R.id.bgBlur)
+        bgImage?.setImageResource(R.drawable.cover)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             val blur = RenderEffect.createBlurEffect(25f, 25f, Shader.TileMode.CLAMP)
-            bgImage.setRenderEffect(blur)
+            bgImage?.setRenderEffect(blur)
         }
         val seekBarVolume = findViewById<SeekBar>(R.id.seekBarVolume)
         val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
