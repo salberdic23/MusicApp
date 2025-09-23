@@ -14,8 +14,12 @@
         android:alpha="0.5"
         android:contentDescription="Fondo borroso"
         android:scaleType="centerCrop"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="-62dp" />
+        android:src="@drawable/cover"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
     <ImageView
         android:id="@+id/imageView2"
@@ -36,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Vetements"
+        android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="#000000"
         android:text="Eladio Carrion, Myke Towers"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,11 +60,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="203dp"
-        android:layout_height="19dp"
+    <SeekBar
+        android:id="@+id/seekBarProgress"
+        android:layout_width="240dp"
+        android:layout_height="30dp"
+        android:thumbTint="@android:color/transparent"
+        android:progressDrawable="@drawable/seekbar_track"
         android:max="100"
         android:progress="0"
         android:progressTint="#E89449"
@@ -77,10 +84,10 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-        app:layout_constraintEnd_toStartOf="@+id/progressBar"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBarProgress"
+        app:layout_constraintEnd_toStartOf="@+id/seekBarProgress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+        app:layout_constraintTop_toTopOf="@+id/seekBarProgress" />
 
     <TextView
         android:id="@+id/tvRemaining"
@@ -91,10 +98,10 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBarProgress"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="@+id/progressBar" />
+        app:layout_constraintStart_toEndOf="@+id/seekBarProgress"
+        app:layout_constraintTop_toTopOf="@+id/seekBarProgress" />
 
     <ImageButton
         android:id="@+id/btnPrevious"
@@ -105,7 +112,7 @@
         android:background="@android:color/transparent"
         android:contentDescription="Previous"
         app:layout_constraintEnd_toStartOf="@+id/btnPlayPause"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarProgress"
         app:srcCompat="@drawable/ic_previous" />
 
     <ImageButton
@@ -117,7 +124,7 @@
         android:contentDescription="Play/Pause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarProgress"
         app:srcCompat="@drawable/ic_play" />
 
     <ImageButton
@@ -129,7 +136,7 @@
         android:background="@android:color/transparent"
         android:contentDescription="Next"
         app:layout_constraintStart_toEndOf="@+id/btnPlayPause"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarProgress"
         app:srcCompat="@drawable/ic_arrow1" />
 
     <androidx.constraintlayout.widget.Guideline
