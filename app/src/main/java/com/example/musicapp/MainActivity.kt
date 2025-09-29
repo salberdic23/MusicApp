@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             val blur = RenderEffect.createBlurEffect(25f, 25f, Shader.TileMode.CLAMP)
             bgImage?.setRenderEffect(blur)
         }
+
         val seekBarVolume = findViewById<SeekBar>(R.id.seekBarVolume)
         val audioManager = getSystemService(AUDIO_SERVICE) as AudioManager
         val maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
@@ -55,12 +56,10 @@ class MainActivity : AppCompatActivity() {
         })
 
         btnPlayPause = findViewById(R.id.btnPlayPause)
-//        progressBar = findViewById(R.id.progressBar)
         tvElapsed = findViewById(R.id.tvElapsed)
         tvRemaining = findViewById(R.id.tvRemaining)
 
         mediaPlayer = MediaPlayer.create(this, R.raw.music)
-//        progressBar.max = mediaPlayer?.duration ?: 100
 
         btnPlayPause.setOnClickListener {
             mediaPlayer?.let { mp ->
@@ -75,38 +74,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        mediaPlayer?.setOnCompletionListener {
-            btnPlayPause.setImageResource(R.drawable.ic_play)
-            progressBar.progress = 0
-            tvElapsed.text = "0:00"
-            tvRemaining.text = "-${formatTime(it.duration)}"
-        }
-
-        // Inicializar vistas
-        btnPlayPause = findViewById(R.id.btnPlayPause)
-//        progressBar = findViewById(R.id.progressBar)
-        tvElapsed = findViewById(R.id.tvElapsed)
-        tvRemaining = findViewById(R.id.tvRemaining)
-
-        // MediaPlayer
-        mediaPlayer = MediaPlayer.create(this, R.raw.music)
-//        mediaPlayer?.let { mp -> progressBar.max = mp.duration }
-
-        // Botón Play/Pause
-        btnPlayPause.setOnClickListener {
-            mediaPlayer?.let { mp ->
-                if (mp.isPlaying) {
-                    mp.pause()
-                    btnPlayPause.setImageResource(R.drawable.ic_play)
-                } else {
-                    mp.start()
-                    btnPlayPause.setImageResource(R.drawable.ic_pause)
-                    updateSeekBar()
-                }
-            }
-        }
-
-        // Fin de canción
         mediaPlayer?.setOnCompletionListener {
             btnPlayPause.setImageResource(R.drawable.ic_play)
             progressBar.progress = 0
@@ -117,7 +84,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateSeekBar() {
         mediaPlayer?.let { mp ->
-//            progressBar.progress = mp.currentPosition
             val elapsed = mp.currentPosition
             val remaining = mp.duration - elapsed
             tvElapsed.text = formatTime(elapsed)
